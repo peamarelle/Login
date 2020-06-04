@@ -3,12 +3,16 @@ const engine = require('ejs-mate');
 const path = require('path');
 const routes = require('./routes/index')
 const morgan = require('morgan');
+const passport = require('passport');
+
+//inicialización
 const app = express();
-require('./database')
+require('./database');
+require('./passport/local-auth');
 const port = 3000;
 
 //middlewares
-app.use(morgan('dev'));//muestra datos de la comunicación con el cliente
+app.use(morgan('dev')); //muestra datos de la comunicación con el cliente
 app.use(express.urlencoded({ extended: false }));
 //settings
 app.set('views', path.join(__dirname, 'views'));

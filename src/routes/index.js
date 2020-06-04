@@ -5,19 +5,17 @@ router.get('/', (req, res, next) => {
     res.render('index')
 });
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res, next) => { // cuando el usuario ingrese se va a poder registrar
     res.render('signup')
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', (req, res, next) => { //devuelve los datos del usuario 
     console.log(req.body.email);
-    res.send('recibido');
+    res.redirect('/');
 });
 
-router.get('/signin', (req, res, next) => {
-});
+router.get('/signin', (req, res, next) => {});
 
-router.post('/signin', (req, res, next) => {
-});
+router.post('/signin', (req, res, next) => {});
 
 module.exports = router;
