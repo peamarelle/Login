@@ -4,6 +4,7 @@ const path = require('path');
 const routes = require('./routes/index')
 const morgan = require('morgan');
 const passport = require('passport');
+const session = require('express-session');
 
 //inicialización
 const app = express();
@@ -14,6 +15,14 @@ const port = 3000;
 //middlewares
 app.use(morgan('dev')); //muestra datos de la comunicación con el cliente
 app.use(express.urlencoded({ extended: false }));
+app.use(session({ //config de la sesion
+    secret: 'mysrectsession',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize()); //inicializo
+app.use(passport.session());
+
 //settings
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', engine);
